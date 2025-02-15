@@ -1,4 +1,10 @@
 import { config } from "./config";
+import {
+  Coordinates,
+  ForecastData,
+  GeocodingResponse,
+  WeatherData,
+} from "./types";
 
 class WeatherApi {
   private createUrl(endpoint: string, params: Record<string, string | number>) {
@@ -17,5 +23,35 @@ class WeatherApi {
     return response.json();
   }
 
-  async getWeatherData() {}
+  async getWeatherData({ lat, lon }: Coordinates): Promise<WeatherData> {
+    const url = this.createUrl(`${config.BASEURL}/weather`, {
+      lat: lat.toString(),
+      lon: lon.toString(),
+      unit: "metric",
+    });
+
+    return this.fetchData<WeatherData>(url);
+  }
+
+  async getWeatherForecast({ lat, lon }: Coordinates): Promise<ForecastData> {
+    const url = this.createUrl(`${config.BASEURL}/forecast`, {
+      lat: lat.toString(),
+      lon: lon.toString(),
+      unit: "metric",
+    });
+
+    return this.fetchData<ForecastData>(url);
+  }
+  async reverseGeocode({
+    lat,
+    lon,
+  }: Coordinates): Promise<GeocodingResponse[]> {
+    const url = this.createUrl(`${config.GEO}/reverse`, {
+      lat: lat.toString(),
+      lon: lon.toString(),
+    });
+    return this.fetchData<GeocodingResponse[]>(url);
+  }
 }
+
+export const weatherApi = new WeatherApi();
