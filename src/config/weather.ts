@@ -9,7 +9,7 @@ import {
 class WeatherApi {
   private createUrl(endpoint: string, params: Record<string, string | number>) {
     const searchParams = new URLSearchParams({
-      apiid: config.API_KEY,
+      appid: config.API_KEY,
       ...params,
     });
     return `${endpoint}?${searchParams.toString()}`;
@@ -17,7 +17,7 @@ class WeatherApi {
   private async fetchData<T>(url: string): Promise<T> {
     const response = await fetch(url);
     if (!response.ok) {
-      throw new Error("unable to fetch the data");
+      throw new Error(`Weather API Error: ${response.statusText}`);
     }
 
     return response.json();
@@ -27,7 +27,7 @@ class WeatherApi {
     const url = this.createUrl(`${config.BASEURL}/weather`, {
       lat: lat.toString(),
       lon: lon.toString(),
-      unit: "metric",
+      units: "metric",
     });
 
     return this.fetchData<WeatherData>(url);
@@ -37,7 +37,7 @@ class WeatherApi {
     const url = this.createUrl(`${config.BASEURL}/forecast`, {
       lat: lat.toString(),
       lon: lon.toString(),
-      unit: "metric",
+      units: "metric",
     });
 
     return this.fetchData<ForecastData>(url);

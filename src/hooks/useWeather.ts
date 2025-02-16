@@ -8,7 +8,7 @@ const WEATHER_KEY = {
   location: (coords: Coordinates) => ["location", coords] as const,
 } as const;
 
-export const useWeatherQuery = (coordinates: Coordinates) => {
+export const useWeatherQuery = (coordinates: Coordinates | null) => {
   return useQuery({
     queryKey: WEATHER_KEY.weather(coordinates ?? { lat: 0, lon: 0 }),
     queryFn: () =>
@@ -17,7 +17,7 @@ export const useWeatherQuery = (coordinates: Coordinates) => {
   });
 };
 
-export const useForecastQuery = (coordinates: Coordinates) => {
+export const useForecastQuery = (coordinates: Coordinates | null) => {
   return useQuery({
     queryKey: WEATHER_KEY.forecast(coordinates ?? { lat: 0, lon: 0 }),
     queryFn: () =>
@@ -26,7 +26,7 @@ export const useForecastQuery = (coordinates: Coordinates) => {
   });
 };
 
-export const useLocationQuery = (coordinates: Coordinates) => {
+export const useLocationQuery = (coordinates: Coordinates | null) => {
   return useQuery({
     queryKey: WEATHER_KEY.location(coordinates ?? { lat: 0, lon: 0 }),
     queryFn: () =>
