@@ -7,7 +7,7 @@ interface geoLocationData {
   isLoading: boolean;
 }
 
-const useGeoLocation = () => {
+export const useGeoLocation = () => {
   const [locationData, setLocationData] = useState<geoLocationData>({
     coordinates: null,
     error: null,
@@ -15,6 +15,8 @@ const useGeoLocation = () => {
   });
 
   const geoLocation = () => {
+    setLocationData((prev) => ({ ...prev, isLoading: true, error: null }));
+
     if (!navigator.geolocation) {
       setLocationData({
         coordinates: null,
