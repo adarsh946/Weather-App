@@ -1,17 +1,17 @@
 import type { ForecastData } from "@/config/types";
 import { format } from "date-fns";
 import { Card, CardContent, CardHeader, CardTitle } from "./ui/card";
-import { LineChart, ResponsiveContainer, XAxis, YAxis } from "recharts";
-import { Tooltip } from "@radix-ui/react-tooltip";
+import {
+  Line,
+  LineChart,
+  ResponsiveContainer,
+  Tooltip,
+  XAxis,
+  YAxis,
+} from "recharts";
 
 interface IForcastData {
   data: ForecastData;
-}
-
-interface IchartData {
-  time: number;
-  temp: number;
-  feels_like: number;
 }
 
 function HourlyTemperature({ data }: IForcastData) {
@@ -43,7 +43,50 @@ function HourlyTemperature({ data }: IForcastData) {
                 axisLine={false}
                 tickFormatter={(value) => `${value}°`}
               />
-              <Tooltip />
+              <Tooltip
+                content={({ active, payload }) => {
+                  if (active && payload && payload.length) {
+                    return (
+                      <div className="rounded-lg bg-background shadow-sm border p-2">
+                        <div className="grid grid-cols-2 gap-2">
+                          <div className="flex flex-col">
+                            <span className="text-[0.70rem] text-muted-foreground uppercase">
+                              Temperature
+                            </span>
+                            <span className="font-bold ">
+                              {payload[0].value}°
+                            </span>
+                          </div>
+                          <div className="flex flex-col">
+                            <span className="text-[0.70rem] text-muted-foreground uppercase">
+                              Feels Like
+                            </span>
+                            <span className=" font-bold">
+                              {payload[1].value}°
+                            </span>
+                          </div>
+                        </div>
+                      </div>
+                    );
+                  }
+                  return null;
+                }}
+              />
+              <Line
+                dataKey="temp"
+                stroke="#2563eb"
+                type="monotone"
+                strokeWidth={2}
+                dot={true}
+              />
+              <Line
+                dataKey="feels_like"
+                stroke="#64748b"
+                type="monotone"
+                strokeWidth={2}
+                dot={true}
+                strokeDasharray="5 5"
+              />
             </LineChart>
           </ResponsiveContainer>
         </div>
