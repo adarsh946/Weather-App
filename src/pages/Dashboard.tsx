@@ -2,6 +2,7 @@ import CurrentWeather from "@/components/currentWeather";
 import HourlyTemperature from "@/components/HourlyTemperature";
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 import { Button } from "@/components/ui/button";
+import WeatherDetails from "@/components/WeatherDetails";
 import { useGeoLocation } from "@/hooks/useGeolocation";
 import {
   useForecastQuery,
@@ -108,6 +109,9 @@ function Dashboard() {
         <div className="flex flex-col lg:flex-row gap-4">
           <CurrentWeather data={weatherQuery.data} location={locationName} />
           <HourlyTemperature data={forecastQuery.data} />
+        </div>
+        <div>
+          <WeatherDetails data={weatherQuery.data} />
         </div>
       </div>
     </div>
