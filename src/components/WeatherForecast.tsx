@@ -1,5 +1,5 @@
 import type { ForecastData } from "@/config/types";
-import { format, nextDay } from "date-fns";
+import { format } from "date-fns";
 import { Card, CardContent, CardHeader, CardTitle } from "./ui/card";
 import { ArrowDown, ArrowUp, Droplets, Wind } from "lucide-react";
 
