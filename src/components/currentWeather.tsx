@@ -2,7 +2,7 @@ import type { GeocodingResponse, WeatherData } from "@/config/types";
 import { Card, CardContent } from "./ui/card";
 import { ArrowDown, ArrowUp, Droplets, Wind } from "lucide-react";
 
-interface ICurrentWeather {
+export interface ICurrentWeather {
   data: WeatherData;
   location?: GeocodingResponse;
 }

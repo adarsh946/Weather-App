@@ -67,22 +67,24 @@ function Dashboard() {
   const locationName = locationQuery.data?.[0];
 
   if (weatherQuery.error || forecastQuery.error) {
-    <Alert variant="destructive">
-      <AlertTriangle className="h-4 w-4" />
-      <AlertTitle>Location Error</AlertTitle>
-      <AlertDescription className="flex flex-col gap-4">
-        <p>Failed to Fetch the data. Please try again.</p>
-      </AlertDescription>
-      <Button
-        variant={"outline"}
-        onClick={handleRefresh}
-        className="w-fit"
-        disabled={weatherQuery.isFetching || forecastQuery.isFetching}
-      >
-        <RefreshCcw className="mr-4 h-4 w-4" />
-        Enable Location
-      </Button>
-    </Alert>;
+    return (
+      <Alert variant="destructive">
+        <AlertTriangle className="h-4 w-4" />
+        <AlertTitle>Location Error</AlertTitle>
+        <AlertDescription className="flex flex-col gap-4">
+          <p>Failed to Fetch the data. Please try again.</p>
+        </AlertDescription>
+        <Button
+          variant={"outline"}
+          onClick={handleRefresh}
+          className="w-fit"
+          disabled={weatherQuery.isFetching || forecastQuery.isFetching}
+        >
+          <RefreshCcw className="mr-4 h-4 w-4" />
+          Enable Location
+        </Button>
+      </Alert>
+    );
   }
 
   if (!weatherQuery.data || !forecastQuery.data) {

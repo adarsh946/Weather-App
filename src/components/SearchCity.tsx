@@ -36,7 +36,7 @@ function SearchCity() {
     });
 
     setOpen(false);
-    navigate(`/city/?${name}?at=${lat}&lon=${lon}`);
+    navigate(`/city/${name}?lat=${lat}&lon=${lon}`);
   };
 
   return (
