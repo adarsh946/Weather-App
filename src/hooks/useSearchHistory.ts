@@ -1,7 +1,7 @@
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import useLocalStorage from "./useLocalStorage";
 
-interface SearchHistoryItem {
+export interface SearchHistoryItem {
   id: string;
   query: string;
   lat: number;
@@ -12,7 +12,7 @@ interface SearchHistoryItem {
   searchedAt: number;
 }
 
-const useSearchHistory = () => {
+export const useSearchHistory = () => {
   const [history, setHistory] = useLocalStorage<SearchHistoryItem[]>(
     "search-history",
     []
