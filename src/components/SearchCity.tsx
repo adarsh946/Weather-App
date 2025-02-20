@@ -23,7 +23,7 @@ function SearchCity() {
   const handleSelect = (cityData: string) => {
     const [lat, lon, name, country] = cityData.split("|");
     setOpen(false);
-    navigate(`/city/?at=${lat}&lon=${lon}`);
+    navigate(`/city/?${name}??at=${lat}&lon=${lon}`);
   };
 
   return (
