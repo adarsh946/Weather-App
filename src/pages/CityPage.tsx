@@ -3,13 +3,15 @@ import HourlyTemperature from "@/components/HourlyTemperature";
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 import WeatherDetails from "@/components/WeatherDetails";
 import WeatherForecast from "@/components/WeatherForecast";
+
 import { useForecastQuery, useWeatherQuery } from "@/hooks/useWeather";
 import { AlertTriangle } from "lucide-react";
 import { useParams, useSearchParams } from "react-router-dom";
+import FavouriteButton from "@/components/favouriteButton";
 
 function CityPage() {
   const [searchParams] = useSearchParams();
-  // const { params } = useParams();
+  const params = useParams();
 
   const lat = parseFloat(searchParams.get("lat") || "0");
   const lon = parseFloat(searchParams.get("lon") || "0");
@@ -37,6 +39,11 @@ function CityPage() {
         <h1 className="text-3xl font-bold tracking-tight">
           {weatherQuery.data?.name}, {weatherQuery.data?.sys.country}
         </h1>
+        <div>
+          <FavouriteButton
+            data={{ ...weatherQuery.data, name: params.cityName || "" }}
+          />
+        </div>
       </div>
       <div className="grid gap-6">
         <div className="flex flex-col  gap-4">

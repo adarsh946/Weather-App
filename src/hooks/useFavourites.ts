@@ -30,7 +30,7 @@ export const useFavourites = () => {
     mutationFn: async (city: Omit<FavouriteCity, "id" | "addedAt">) => {
       const newCity = {
         ...city,
-        id: `${city.lat}-${city.lon}-${Date.now()}`,
+        id: `${city.lat}-${city.lon}}`,
         addedAt: Date.now(),
       };
 
@@ -71,7 +71,7 @@ export const useFavourites = () => {
     addFavourites,
     removeFavourites,
     isFavourite: (lat: number, lon: number) => {
-      favourites.some(
+      return favourites.some(
         (fav: { lat: number; lon: number }) =>
           fav.lat === lat && fav.lon === lon
       );
