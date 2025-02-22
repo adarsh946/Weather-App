@@ -19,7 +19,7 @@ export interface WeatherCondition {
 }
 
 export interface WeatherData {
-  coord?: Coordinates;
+  coord: Coordinates;
   weather: WeatherCondition[];
   main: {
     temp: number;

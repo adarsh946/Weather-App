@@ -31,38 +31,48 @@ const FavouriteCityTab = ({
   };
 
   return (
-    <div onClick={handleClick} role="button" tabIndex={0}>
+    <div
+      onClick={handleClick}
+      role="button"
+      tabIndex={0}
+      className="relative min-w-[250px] flex items-center cursor-pointer rounded-lg border bg-card p-4 pr-8 shadow-sm transition-all hover:shadow-md"
+    >
       <Button
         variant="ghost"
         size="icon"
+        className="absolute right-1 top-1 h-6 w-6 rounded-full p-0 hover:text-destructive-foreground group-hover:opacity-100"
         onClick={(e) => {
           e.stopPropagation();
           onRemove(id);
           toast.error(`Removed ${name} from Favourites.`);
         }}
       >
-        <X className="h-4 w-4" />
+        <X className="h-4 w-4 " />
       </Button>
       {isLoading ? (
-        <div>
+        <div className="flex h-8 items-center justify-center">
           <Loader2 className="h-4 w-4" />
         </div>
       ) : weather ? (
         <>
-          <div>
+          <div className="flex items-center gap-2">
             <img
               src={`https://openweathermap.org/img/wn/${weather.weather[0].icon}.png`}
               alt={weather.weather[0].description}
               className="h-8 w-8"
             />
             <div>
-              <p>{weather.name}</p>
-              <p>{weather.sys.country}</p>
+              <p className="font-medium">{weather.name}</p>
+              <p className="text-xs text-muted-foreground">
+                {weather.sys.country}
+              </p>
             </div>
           </div>
-          <div>
-            <p>{weather.main.temp}°</p>
-            <p>{weather.weather[0].description}</p>
+          <div className="ml-auto text-right">
+            <p className="text-lg font-bold">{weather.main.temp}°</p>
+            <p className="text-xs text-muted-foreground capitalize">
+              {weather.weather[0].description}
+            </p>
           </div>
         </>
       ) : null}
