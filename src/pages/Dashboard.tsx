@@ -1,4 +1,5 @@
 import CurrentWeather from "@/components/currentWeather";
+import FavouriteCities from "@/components/favouriteCities";
 import HourlyTemperature from "@/components/HourlyTemperature";
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 import { Button } from "@/components/ui/button";
@@ -93,6 +94,8 @@ function Dashboard() {
 
   return (
     <div className="space-y-4">
+      <FavouriteCities />
+
       <div className="flex justify-between items-center">
         <h1 className="text-xl font-bold tracking-tight">My Location</h1>
         <Button

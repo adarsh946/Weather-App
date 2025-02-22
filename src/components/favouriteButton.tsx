@@ -4,7 +4,7 @@ import { toast } from "sonner";
 import { Button } from "./ui/button";
 import { Star } from "lucide-react";
 
-interface FavouriteButtonProp {
+export interface FavouriteButtonProp {
   data: WeatherData;
 }
 

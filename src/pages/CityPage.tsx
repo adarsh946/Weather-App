@@ -40,9 +40,11 @@ function CityPage() {
           {weatherQuery.data?.name}, {weatherQuery.data?.sys.country}
         </h1>
         <div>
-          <FavouriteButton
-            data={{ ...weatherQuery.data, name: params.cityName || "" }}
-          />
+          {weatherQuery.data && (
+            <FavouriteButton
+              data={{ ...weatherQuery.data, name: params.cityName || "" }}
+            />
+          )}
         </div>
       </div>
       <div className="grid gap-6">
