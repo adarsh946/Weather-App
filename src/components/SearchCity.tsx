@@ -62,7 +62,7 @@ function SearchCity() {
             <CommandEmpty>No cities found.</CommandEmpty>
           )}
 
-          {favourites.length > 0 && (
+          {/* {favourites.length > 0 && (
             <CommandGroup heading="Favourites">
               {favourites.map((city: FavouriteCity) => (
                 <CommandItem
@@ -83,7 +83,7 @@ function SearchCity() {
                 </CommandItem>
               ))}
             </CommandGroup>
-          )}
+          )} */}
           {history.length > 0 && (
             <>
               <CommandSeparator />

@@ -69,7 +69,7 @@ function WeatherForecast({ data }: IWeatherForecast) {
                   {day.weather.description}
                 </p>
               </div>
-              <div className="flex justify-center gap-4">
+              <div className="flex justify-center gap-4 flex-col md:flex-row">
                 <span className="flex items-center text-blue-500">
                   <ArrowDown className="mr-1 h-4 w-4" />
                   {tempFormat(day.temp_min)}
@@ -79,7 +79,7 @@ function WeatherForecast({ data }: IWeatherForecast) {
                   {tempFormat(day.temp_max)}
                 </span>
               </div>
-              <div className="flex gap-4 justify-end">
+              <div className="flex gap-4 justify-end flex-col md:flex-row">
                 <span className="flex items-center gap-1">
                   <Droplets className="h-4 w-4 text-blue-500" />
                   <span className="text-sm"> {day.humidity}% </span>
