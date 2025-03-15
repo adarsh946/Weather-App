@@ -16,7 +16,7 @@ import { AlertTriangle, MapPin, RefreshCcw } from "lucide-react";
 function Dashboard() {
   const {
     coordinates,
-    isLoading: locationLoading,
+
     error: locationError,
     geoLocation,
   } = useGeoLocation();

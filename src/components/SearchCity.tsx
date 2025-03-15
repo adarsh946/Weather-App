@@ -8,9 +8,9 @@ import {
   CommandItem,
   CommandList,
   CommandSeparator,
-} from "./ui/command";
+} from "@/components/ui/command";
 import { Button } from "./ui/button";
-import { Clock, Loader2, Search, Star, XCircle } from "lucide-react";
+import { Clock, Loader2, Star, Search, XCircle } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import { SearchHistoryItem, useSearchHistory } from "@/hooks/useSearchHistory";
 import { format } from "date-fns";
@@ -62,7 +62,7 @@ function SearchCity() {
             <CommandEmpty>No cities found.</CommandEmpty>
           )}
 
-          {/* {favourites.length > 0 && (
+          {favourites.length > 0 && (
             <CommandGroup heading="Favourites">
               {favourites.map((city: FavouriteCity) => (
                 <CommandItem
@@ -83,7 +83,7 @@ function SearchCity() {
                 </CommandItem>
               ))}
             </CommandGroup>
-          )} */}
+          )}
           {history.length > 0 && (
             <>
               <CommandSeparator />
