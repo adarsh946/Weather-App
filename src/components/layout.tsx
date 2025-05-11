@@ -13,7 +13,7 @@ function Layout({ children }: PropsWithChildren) {
       {/* footer */}
       <footer className="border-t  backdrop-blur py-12 supports-[backdrop-filter]:bg-background/60">
         <div className="text-center container text-gray-200 mx-auto">
-          <p> Made with 💖 by Adarsh Shukla</p>
+          <p> Made with 💖 by Ambuj Dubey.</p>
         </div>
       </footer>
     </div>
